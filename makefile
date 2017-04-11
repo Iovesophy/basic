@@ -1,12 +1,12 @@
-MAIN = mbas
+MAIN = basic
 CMDS = bc06
-OBJ = $(MAIN).c  $(CMDS).c gettoken.o
+OBJ = $(MAIN).c  $(CMDS).c gettoken.o eval2.o
 
-all:    mbas.exe
-mbas.exe: $(OBJ)
-	cc -o basic  $(OBJ)
+all:    basic
+basic: $(OBJ)
+	cc -o basic $(OBJ) && cc -c eval2.c
 
-$(MAIN).obj:    $(MAIN).c
-$(CMDS).obj:    $(CMDS).c
-gettoken.obj:   gettoken.c gettoken.h
-
+$(MAIN).o:    $(MAIN).c
+$(CMDS).o:    $(CMDS).c
+gettoken.o:   gettoken.c gettoken.h
+eval2.o:      eval2.c

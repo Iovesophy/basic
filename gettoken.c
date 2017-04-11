@@ -33,12 +33,12 @@ none
 
 for example 
 次の1行を変数gt_lineに格納する。
-2.1 + 3 4.33 + 5e2
+2.1 + 3 + 4.33 + 5e2
 最初にget_token()を呼び出すと、変数tokenには、
 2.1が格納される。
 次に呼び出すと空白は無視されて+が格納される。
-次に３、＋、４．３３、＋、5e2と順に格納
-最後はヌル値が格納
+次に3、+、4.33、+、5e2と順に格納
+最後にnill値が格納
 
 処理フロー
 １、ポインタ変数pの内容が数字である
@@ -65,9 +65,10 @@ for example
 */
 //[gettoken.c]
 /*
-	gettoken.c - 字句解析関数群　Ver 1.2
-	1998.2 (c) kazuya yuda
+	//gettoken.c - 字句解析関数群　Ver 1.2
+	//2017.4 (c) kazuya yuda
 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
