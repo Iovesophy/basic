@@ -17,19 +17,19 @@ int	last;
 int	valnum;
 
 if(argc != 2) {
-	printf("please indicate file name!\n");
+	printf("Please indicate file name!\n");
 	exit(1);
 }
 
 if((fp = fopen(argv[1], "r")) == NULL) {
-	printf("I do not file open...\n");
+	printf("BASIC do not file open...\n");
 	exit(1);
 }
 
 while(fgets(buff, 256, fp) != NULL) {
 	list[now] = (char *)malloc(strlen(buff) + 1);
 	if(list[now] == NULL) {
-		printf("there is not data room.\n");
+		printf("There is not data room.\n");
 		exit(1);
 	}
 	strcpy(list[now], buff);
@@ -40,7 +40,7 @@ fclose(fp);
 for(now = 0; now < last; ++now){
 	strcpy(gt_line, list[now]);
 	get_token();
-	if(!strcmp("END", token)){
+	if(!strcmp("O", token)){
 		printf("\x1b[37m");
 		printf("✔ \n");
 		printf("\x1b[0m");
