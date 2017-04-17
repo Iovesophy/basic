@@ -1,0 +1,6 @@
+INPUT "あなたの生年月日は";A
+INPUT "あなたの年齢は";B
+INPUT "あなたのスキな数字は";C
+X = (A + B) * C
+PRINT X
+END

@@ -1,0 +1,5 @@
+INPUT A
+INPUT B
+X = A + B
+PRINT X
+END

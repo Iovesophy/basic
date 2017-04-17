@@ -1,0 +1,8 @@
+INPUT A
+INPUT "Data(No ?) = ",B
+INPUT "Data(Yes ?) = ";C
+X = (A + B) * C
+PRINT A
+PRINT A,B;C
+PRINT "Answer = ";
+END

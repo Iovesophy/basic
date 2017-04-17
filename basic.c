@@ -5,8 +5,12 @@
 #include "gettoken.h"
 extern void bc_print(void);
 extern void bc_input(void);
+extern int  bc_for(int);
+extern int  bc_next(int);
 extern double expression(void);
 double hensuu[26];
+int	for_ln  = -1;
+int	next_ln = -1;
 void main(int argc, char *argv[])
 {
 char	*list[100];
@@ -40,7 +44,7 @@ fclose(fp);
 for(now = 0; now < last; ++now){
 	strcpy(gt_line, list[now]);
 	get_token();
-	if(!strcmp("O", token)){
+	if(!strcmp("END", token)){
 		printf("\x1b[37m");
 		printf("✔ \n");
 		printf("\x1b[0m");
@@ -51,9 +55,9 @@ for(now = 0; now < last; ++now){
 	else if(!strcmp("PRINT",token))
 		bc_print();
 	else if(!strcmp("FOR",token))
-		printf("FOR order\n");
+		now = bc_for(now);
 	else if(!strcmp("NEXT",token))
-		printf("NEXT order\n");
+		now = bc_next(now);
 	else if(!strcmp("IF",token))
 		printf("IF order\n");
 	else if(!strcmp("ELSEIF",token))
@@ -73,8 +77,10 @@ for(now = 0; now < last; ++now){
 		}
 		get_token();
 		hensuu[valnum] = expression();
-	}else
+		}
+	else if(!strcmp("\n",token))
+		continue;
+	else
 		printf("do not order!\n");
-
 	}
 }
