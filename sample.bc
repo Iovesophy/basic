@@ -1,5 +1,0 @@
-INPUT "加算プログラム左辺";A
-INPUT "右辺";B
-X = A + B
-PRINT "答え";X
-O
