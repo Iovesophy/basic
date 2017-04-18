@@ -7,7 +7,7 @@ extern void bc_print(void);
 extern void bc_input(void);
 extern int  bc_for(int);
 extern int  bc_next(int);
-extern double expression(void);
+extern double logic(void);
 double hensuu[26];
 int	for_ln  = -1;
 int	next_ln = -1;
@@ -76,7 +76,7 @@ for(now = 0; now < last; ++now){
 			exit(1);
 		}
 		get_token();
-		hensuu[valnum] = expression();
+		hensuu[valnum] = logic();
 		}
 	else if(!strcmp("\n",token))
 		continue;

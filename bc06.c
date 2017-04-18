@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include "gettoken.h"
 /* グローバル変数 */
-extern double	expression(void); /* eval.c */
+extern double	logic(void); /* eval.c */
 extern double	hensuu[26];      /* 変数用(A～Z) */
 extern int	for_ln;
 extern int	next_ln;
@@ -24,18 +24,18 @@ int bc_for(int ln)
 		exit(1);
 	}
 	get_token();
-	d1 = expression();
+	d1 = logic();
 	get_token();
 	if(token[0] != 'G' || token[1] != 'O'){
 		printf("Error : FOR syntax error[TO]\n");
 		exit(1);
 	}
 	get_token();
-	d2 = expression();
+	d2 = logic();
 	get_token();
 	if(!strcmp(token, "STEP")){
 		get_token();
-		d3 = expression();
+		d3 = logic();
 	}else if(*token == '\n')
 		d3 = 1;
 	else{
@@ -76,7 +76,7 @@ void bc_print(void)
 		else if(*token == '\n')
 			break;
 		else
-			printf("%f", expression());
+			printf("%f", logic());
 		get_token();
 		if(*token == ',')
 			printf("%s"," ");

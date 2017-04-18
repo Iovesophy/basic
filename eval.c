@@ -60,7 +60,13 @@ double logic(void)
                 ans = 1;
             else
                 ans = 0;
-        }else
+        }else if(*token == '!'){   /* not equal*/
+		get_token();
+		if(ans != expression())
+			ans = 1;
+		else
+			ans = 0;
+	}else
             break;
     }
     unget_token(token);

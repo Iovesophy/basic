@@ -1,0 +1,15 @@
+INPUT "Data1 = ",A
+INPUT "Data2 = ",B
+X = A = B
+PRINT "A = B =  "; X
+X = A <> B
+PRINT "B <> B = "; X
+X = A > B
+PRINT "A > B =  "; X
+X = A >= B
+PRINT "A >= B = "; X
+X = A < B
+PRINT "A < B =  "; X
+X = A <= B
+PRINT "A <= B = "; X
+END
