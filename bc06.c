@@ -8,6 +8,123 @@ extern double	logic(void); /* eval.c */
 extern double	hensuu[26];      /* 変数用(A～Z) */
 extern int	for_ln;
 extern int	next_ln;
+extern int	if_flag;
+extern int	last;
+extern char	*list[200];
+
+int bc_if(int ln)
+{
+    double      ans;
+    int         n;
+
+    if(if_flag != -1){      /* 二重if文の禁止 */
+        printf("IF-ENDIFブロックの中にIF文があります\n");
+        exit(1);
+    }
+    get_token();            /* 次のトークン(条件)取得 */
+    ans = logic();          /* 条件式の計算 */
+    if(ans == 1.0)          /* 条件 真 */
+        if_flag = 1;
+    else{                   /* 条件 偽 */
+        if_flag = 0;
+        /* 次のESLEIF, ELSEまたはENDIFまで飛ばす */
+        for(n = ln + 1; n < last; ++n){     /* 次の行から最終行まで調べる */
+            strcpy(gt_line, list[n]);
+            get_token();            /* 先頭のトークン取得 */
+            if(!strcmp(token, "ELSEIF") || !strcmp(token, "ELSE") ||
+               !strcmp(token, "ENDIF")){
+                ln = n - 1;         /* 現在行をELSE等の行番号-1に設定 */
+                break;
+            }
+        }
+        if(n == last){          /* 最終行までELSE等がない */
+            printf("対応するELSEIF, ELSE, ENDIFがありません\n");
+            exit(1);
+        }
+    }
+    return(ln);
+}
+int bc_elseif(int ln)
+{
+    double      ans;
+    int         n;
+    
+    if(if_flag == -1){      /* IF-ENDIFブロック外 */
+        printf("IF-ENDIFブロックの外にELSEIF文があります\n");
+        exit(1);
+    }
+    if(if_flag == 1){       /* if,elseifが真の時、次のENDIFまで飛ばす */
+        for(n = ln + 1; n < last; ++n){     /* 次の行から最終行まで調べる */
+            strcpy(gt_line, list[n]);
+            get_token();                /* 先頭のトークン取得 */
+            if(!strcmp(token, "ENDIF")){
+                ln = n - 1;             /* 現在行をENDIFの行番号-1に設定 */
+                break;
+            }
+        }
+        if(n == last){          /* 最終行までENDIDがない */
+            printf("対応するENDIFがありません\n");
+            exit(1);
+        }
+    }else{                  /* 偽の時、条件を判定 */
+        get_token();            /* 次のトークン(条件)取得 */
+        ans = logic();          /* 条件式の計算 */
+        if(ans == 1.0)          /* 条件 真 */
+            if_flag = 1;
+        else{                   /* 条件 偽 */
+            if_flag = 0;
+            /* 次のESLEIF, ELSEまたはENDIFまで飛ばす */
+            for(n = ln + 1; n < last; ++n){     /* 次の行から最終行まで調べる */
+                strcpy(gt_line, list[n]);
+                get_token();            /* 先頭のトークン取得 */
+                if(!strcmp(token, "ELSEIF") || !strcmp(token, "ELSE") ||
+                   !strcmp(token, "ENDIF")){
+                    ln = n - 1;         /* 現在行をELSE等の行番号に設定 */
+                    break;
+                }
+            }
+            if(n == last){          /* 最終行までELSE等がない */
+                printf("対応するELSEIF, ELSE, ENDIFがありません\n");
+                exit(1);
+            }
+        }
+    }
+    return(ln);
+}
+int bc_else(int ln)
+{
+    int         n;
+    
+    if(if_flag == -1){      /* IF-ENDIFブロック外 */
+        printf("IF-ENDIFブロックの外にELSE文があります\n");
+        exit(1);
+    }
+    if(if_flag == 1){       /* if,elseifが真の時、次のENDIFまで飛ばす */
+        for(n = ln + 1; n < last; ++n){     /* 次の行から最終行まで調べる */
+            strcpy(gt_line, list[n]);
+            get_token();                /* 先頭のトークン取得 */
+            if(!strcmp(token, "ENDIF")){
+                ln = n - 1;             /* 現在行をENDIFの行番号-1に設定 */
+                break;
+            }
+        }
+        if(n == last){          /* 最終行までENDIDがない */
+            printf("対応するENDIFがありません\n");
+            exit(1);
+        }
+    }else                   /* 偽の時 */
+        if_flag = 1;
+    return(ln);
+}
+int bc_endif(int ln)
+{
+    if(if_flag == -1){      /* IF-ENDIFブロック外 */
+        printf("IF-ENDIFブロックの外にENDIF文があります\n");
+        exit(1);
+    }
+    if_flag = -1;
+    return(ln);
+}
 
 int bc_for(int ln)
 {

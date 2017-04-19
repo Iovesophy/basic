@@ -1,17 +1,16 @@
-INPUT "Data1 = ",A
-INPUT "Data2 = ",B
-X = A == B
-PRINT "A == B = "; X
-X = A != B
-PRINT "A != B = "; X
-X = A <> B
-PRINT "A <> B = "; X
-X = A > B
-PRINT "A > B =  "; X
-X = A >= B
-PRINT "A >= B = "; X
-X = A < B
-PRINT "A < B =  "; X
-X = A <= B
-PRINT "A <= B = "; X
-END
+INPUT "IF A=12.34 ? A=",A
+
+IF A <> 12.34
+    PRINT "A=12.34"
+ELSE
+    PRINT "Not A=12.34"
+ENDIF
+
+INPUT "DATA A=",A
+INPUT "DATA B=",B
+
+IF A != B
+    PRINT "A=B"
+ENDIF
+
+EXIT
