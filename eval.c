@@ -56,16 +56,24 @@ double logic(void)
             }
         }else if(*token == '='){    /* 等しい */
             get_token();
-            if(ans == expression())
-                ans = 1;
-            else
-                ans = 0;
+	    if(*token == '='){      /* equal *2 */
+		get_token();
+            	if(ans == expression())
+                	ans = 1;
+            	else
+                	ans = 0;
+	    }
         }else if(*token == '!'){   /* not equal*/
 		get_token();
-		if(ans != expression())
-			ans = 1;
-		else
-			ans = 0;
+		if(*token == '='){
+			get_token();
+			if(ans != expression())
+				ans = 1;
+			else
+				ans = 0;
+		}else
+			printf("syntax error!");
+
 	}else
             break;
     }
