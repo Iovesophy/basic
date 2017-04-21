@@ -16,16 +16,14 @@ double hensuu[26];
 int	for_ln  = -1;
 int	next_ln = -1;
 int	if_flag = -1;
-char	*list[200];
+char	*list[100];
 int	last;
 
 void main(int argc, char *argv[])
 {
-char	*list[100];
 char	buff[256];
 FILE	*fp;
 int	now = 0;
-int	last;
 int	valnum;
 
 if(argc != 2) {

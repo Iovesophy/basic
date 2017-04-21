@@ -10,7 +10,7 @@ extern int	for_ln;
 extern int	next_ln;
 extern int	if_flag;
 extern int	last;
-extern char	*list[200];
+extern char	*list[100];
 
 int bc_if(int ln)
 {
@@ -30,10 +30,10 @@ int bc_if(int ln)
         /* 次のESLEIF, ELSEまたはENDIFまで飛ばす */
         for(n = ln + 1; n < last; ++n){     /* 次の行から最終行まで調べる */
             strcpy(gt_line, list[n]);
-            get_token();            /* 先頭のトークン取得 */
+            get_token();            
             if(!strcmp(token, "ELSEIF") || !strcmp(token, "ELSE") ||
                !strcmp(token, "ENDIF")){
-                ln = n - 1;         /* 現在行をELSE等の行番号-1に設定 */
+                ln = n - 1;         
                 break;
             }
         }
@@ -58,7 +58,7 @@ int bc_elseif(int ln)
             strcpy(gt_line, list[n]);
             get_token();                /* 先頭のトークン取得 */
             if(!strcmp(token, "ENDIF")){
-                ln = n - 1;             /* 現在行をENDIFの行番号-1に設定 */
+                ln = n;             /* 現在行をENDIFの行番号-1に設定 */
                 break;
             }
         }
@@ -79,7 +79,7 @@ int bc_elseif(int ln)
                 get_token();            /* 先頭のトークン取得 */
                 if(!strcmp(token, "ELSEIF") || !strcmp(token, "ELSE") ||
                    !strcmp(token, "ENDIF")){
-                    ln = n - 1;         /* 現在行をELSE等の行番号に設定 */
+                    ln = n;         /* 現在行をELSE等の行番号に設定 */
                     break;
                 }
             }
@@ -104,7 +104,7 @@ int bc_else(int ln)
             strcpy(gt_line, list[n]);
             get_token();                /* 先頭のトークン取得 */
             if(!strcmp(token, "ENDIF")){
-                ln = n - 1;             /* 現在行をENDIFの行番号-1に設定 */
+                ln = n;             /* 現在行をENDIFの行番号-1に設定 */
                 break;
             }
         }

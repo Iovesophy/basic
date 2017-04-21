@@ -1,16 +1,7 @@
-INPUT "IF A=12.34 ? A=",A
-
-IF A <> 12.34
-    PRINT "A=12.34"
+INPUT "IF A=12 ? A=",A
+IF A == 12 THEN
+    PRINT "True"
 ELSE
-    PRINT "Not A=12.34"
+    PRINT "False"
 ENDIF
-
-INPUT "DATA A=",A
-INPUT "DATA B=",B
-
-IF A != B
-    PRINT "A=B"
-ENDIF
-
 EXIT
