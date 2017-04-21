@@ -1,0 +1,18 @@
+PRINT "/--------------*"
+PRINT "| MY BASIC !!! |"
+PRINT "*--------------/"
+
+INPUT "old";A
+INPUT "OLD";B
+
+X = A + B 
+
+IF X == B THEN
+	PRINT "wow!"
+ELSEIF X != B
+	PRINT "yes!"
+ELSE
+	PRINT "no--!"
+ENDIF
+
+EXIT
