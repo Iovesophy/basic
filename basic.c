@@ -72,8 +72,8 @@ for(now = 0; now < last; ++now){
 		now = bc_else(now);
 	else if(!strcmp("ENDIF",token))
 		now = bc_endif(now);
-	else if(!strcmp("REM",token))
-		printf("REM order");
+	else if(!strcmp("#",token))
+		continue;
 	else if(isalpha(*token)){
 		valnum = *token - 'A';
 		get_token();

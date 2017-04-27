@@ -2,6 +2,8 @@ PRINT "/--------------*"
 PRINT "| MY BASIC !!! |"
 PRINT "*--------------/"
 
+# INPUT ksjdfkjeivnedklsjf
+
 INPUT "old";A
 INPUT "OLD";B
 

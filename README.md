@@ -4,6 +4,35 @@ My basic programming language.
 この言語は基本的なBASICを学習目的で開発するためのもの。  
 参考サイト　http://masudahp.web.fc2.com/cl/mbasic/mbas09.html
 
+# order list
+
+``` 
+ if(!strcmp("EXIT", token)){
+                printf("\x1b[37m");
+                printf("✔ \n");
+                printf("\x1b[0m");
+                exit(1);
+        }
+        else if(!strcmp("INPUT",token))
+                bc_input();
+        else if(!strcmp("PRINT",token))
+                bc_print();
+        else if(!strcmp("FOR",token))
+                now = bc_for(now);
+        else if(!strcmp("NEXT",token))
+                now = bc_next(now);
+        else if(!strcmp("IF",token))
+                now = bc_if(now);
+        else if(!strcmp("ELSEIF",token))
+                now = bc_elseif(now);
+        else if(!strcmp("ELSE",token))
+                now = bc_else(now);
+        else if(!strcmp("ENDIF",token))
+                now = bc_endif(now);
+        else if(!strcmp("#",token))
+                continue;
+```
+
 # 字句解析  
 単語に分解して取り出す関数と取り出した単語を元に戻す関数作成。  
 関数の書式。  
