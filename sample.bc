@@ -2,13 +2,14 @@ PRINT "/--------------*"
 PRINT "| MY BASIC !!! |"
 PRINT "*--------------/"
 
-# INPUT ksjdfkjeivnedklsjf
-
+# 条件のデータ入力
 INPUT "old";A
 INPUT "OLD";B
 
+# 数値計算
 X = A + B 
 
+# 条件分岐
 IF X == B THEN
 	PRINT "wow!"
 ELSEIF X != B
@@ -17,4 +18,9 @@ ELSE
 	PRINT "no--!"
 ENDIF
 
+FOR C = 1 GO 5
+	PRINT "kayako is nice"
+NEXT
+
+# 終了
 EXIT
