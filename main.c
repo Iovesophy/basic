@@ -143,7 +143,7 @@ int bc_for(int ln)
 	get_token();
 	d1 = logic();
 	get_token();
-	if(token[0] != 'G' || token[1] != 'O'){
+	if(token[0] != 'T' || token[1] != 'O'){
 		printf("Error : FOR syntax error[TO]\n");
 		exit(1);
 	}

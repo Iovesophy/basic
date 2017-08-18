@@ -1,10 +1,10 @@
 MAIN = basic
-CMDS = bc06
+CMDS = main
 OBJ = $(MAIN).c  $(CMDS).c gettoken.o eval.o
 
 all:    basic
 basic: $(OBJ)
-	cc -o basic $(OBJ) && cc -c eval.c
+	cc -o basic $(OBJ)
 
 $(MAIN).o:    $(MAIN).c
 $(CMDS).o:    $(CMDS).c

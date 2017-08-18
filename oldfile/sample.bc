@@ -1,5 +1,26 @@
-INPUT "加算プログラム左辺";A
-INPUT "右辺";B
-X = A + B
-PRINT "答え";X
-O
+PRINT "/--------------*"
+PRINT "| MY BASIC !!! |"
+PRINT "*--------------/"
+
+# 条件のデータ入力
+INPUT "old";A
+INPUT "OLD";B
+
+# 数値計算
+X = A + B 
+
+# 条件分岐
+IF X == B THEN
+	PRINT "wow!"
+ELSEIF X != B
+	PRINT "yes!"
+ELSE
+	PRINT "no--!"
+ENDIF
+
+FOR C = 1 GO 5
+	PRINT "kayako is nice"
+NEXT
+
+# 終了
+EXIT
