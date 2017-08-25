@@ -208,21 +208,26 @@ void bc_print(void)
 }
 void bc_system(void)
 {
-char buff[256];
+char buff[1000];
 int buff_length = strlen(buff);
 	memset(buff,'\0',buff_length);
         while(1){
 		get_token();
-		if(*token == '-')
-			;
-		else
-			strcat(buff," ");
 		strcat(buff,token);
+		//strcat(buff," ");
 		get_token();
 		if(*token == '\n')
 			break;
+		else if(*token == '.')
+			;
+		else
+			strcat(buff," ");
+		
+		strcat(buff,token);
         }
+	//strcat(buff,"\"");
 	printf("%s\n",buff);
+	//system(buff);
 	memset(buff,'\0',buff_length);
 	
 }
