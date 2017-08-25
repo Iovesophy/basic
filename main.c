@@ -208,12 +208,12 @@ void bc_print(void)
 }
 void bc_system(void)
 {
-char buff[1000];
-int buff_length = strlen(buff);
-	memset(buff,'\0',buff_length);
+char sbuff[1000];
+int buff_length = strlen(sbuff);
+	memset(sbuff,'\0',buff_length);
         while(1){
 		get_token();
-		strcat(buff,token);
+		strcat(sbuff,token);
 		//strcat(buff," ");
 		get_token();
 		if(*token == '\n')
@@ -221,14 +221,14 @@ int buff_length = strlen(buff);
 		else if(*token == '.')
 			;
 		else
-			strcat(buff," ");
+			strcat(sbuff," ");
 		
-		strcat(buff,token);
+		strcat(sbuff,token);
         }
 	//strcat(buff,"\"");
-	printf("%s\n",buff);
-	//system(buff);
-	memset(buff,'\0',buff_length);
+	printf("%s",sbuff);
+	system(sbuff);
+	memset(sbuff,'\0',buff_length);
 	
 }
 
