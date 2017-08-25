@@ -74,6 +74,8 @@ for(now = 0; now < last; ++now){
 		now = bc_endif(now);
 	else if(!strcmp("#",token))
 		continue;
+	else if(!strcmp("SYSTEM",token))
+		bc_system();
 	else if(isalpha(*token)){
 		valnum = *token - 'A';
 		get_token();

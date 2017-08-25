@@ -18,8 +18,6 @@ int bc_if(int ln)
     int         n;
 
     if(if_flag != -1){      /* 二重if文の禁止 */
-        printf("IF-ENDIFブロックの中にIF文があります\n");
-        exit(1);
     }
     get_token();            /* 次のトークン(条件)取得 */
     ans = logic();          /* 条件式の計算 */
@@ -208,6 +206,27 @@ void bc_print(void)
 	}
 	printf("\n");
 }
+void bc_system(void)
+{
+char buff[256];
+int buff_length = strlen(buff);
+	memset(buff,'\0',buff_length);
+        while(1){
+		get_token();
+		if(*token == '-')
+			;
+		else
+			strcat(buff," ");
+		strcat(buff,token);
+		get_token();
+		if(*token == '\n')
+			break;
+        }
+	printf("%s\n",buff);
+	memset(buff,'\0',buff_length);
+	
+}
+
 void bc_input(void)
 {
 	char	val;	/* var name (number)*/
