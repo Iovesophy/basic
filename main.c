@@ -208,7 +208,7 @@ void bc_print(void)
 }
 void bc_system(void)
 {
-char sbuff[100000];
+char sbuff[10000];
 int buff_length = strlen(sbuff);
 	//memset(sbuff,'\0',buff_length);
         while(1){
@@ -218,12 +218,13 @@ int buff_length = strlen(sbuff);
 		if(*token == '\n')
 			break;
 		else if(*token == '-')
-			;//sbuff[strlen(sbuff)-1] = '\0';
+			;
 		else
 			strcat(sbuff," ");
 
         }
-	//printf("%s",sbuff);
+	printf("%s",sbuff);
+	printf("\n");
 	system(sbuff);
 	memset(sbuff,'\0',buff_length);
 	
