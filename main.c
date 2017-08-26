@@ -223,7 +223,7 @@ int buff_length = strlen(sbuff);
 			strcat(sbuff," ");
 
         }
-	printf("%s",sbuff);
+	//printf("%s",sbuff);
 	system(sbuff);
 	memset(sbuff,'\0',buff_length);
 	
