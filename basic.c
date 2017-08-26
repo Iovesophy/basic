@@ -5,6 +5,7 @@
 #include "gettoken.h"
 extern void bc_print(void);
 extern void bc_input(void);
+extern void bc_system(void);
 extern int  bc_for(int);
 extern int  bc_next(int);
 extern int  bc_if(int);
@@ -60,6 +61,8 @@ for(now = 0; now < last; ++now){
 		bc_input();
 	else if(!strcmp("PRINT",token))
 		bc_print();
+	else if(!strcmp("SYSTEM",token))
+		bc_system();
 	else if(!strcmp("FOR",token))
 		now = bc_for(now);
 	else if(!strcmp("NEXT",token))
@@ -74,8 +77,6 @@ for(now = 0; now < last; ++now){
 		now = bc_endif(now);
 	else if(!strcmp("#",token))
 		continue;
-	else if(!strcmp("SYSTEM",token))
-		bc_system();
 	else if(isalpha(*token)){
 		valnum = *token - 'A';
 		get_token();
