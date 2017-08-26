@@ -217,7 +217,7 @@ int buff_length = strlen(sbuff);
 		//get_token();
 		if(*token == '\n')
 			break;
-		else if(*token == '.')
+		else if(*token == '-')
 			;//sbuff[strlen(sbuff)-1] = '\0';
 		else
 			strcat(sbuff," ");
